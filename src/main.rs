@@ -10,6 +10,11 @@ fn main() {
     };
 
     println!("{} {}", ossan.name, ossan.age);
+
+    let result: Result<i32, String> = Ok(200);
+    let _result2 = result.and_then(func);
+    let result3: Result<i32, String> = Err("error".to_string());
+    let _result4 = result3.and_then(func);
 }
 
 fn calc(x: i64, y:i64) -> i64 {
@@ -32,5 +37,10 @@ fn hoge(x: i32, y: i32) -> i32 {
 struct Ossan {
     name: String,
     age: u32
+}
+
+fn func(code: i32) -> Result<i32, String> {
+    println!("code: {}", code);
+    Ok(100)
 }
 
