@@ -15,6 +15,11 @@ fn main() {
     let _result2 = result.and_then(func);
     let result3: Result<i32, String> = Err("error".to_string());
     let _result4 = result3.and_then(func);
+
+    let vec1 = vec![1,2,3,4,5];
+    for el in &vec1 {
+        println!("{}", el);
+    }
 }
 
 fn calc(x: i64, y:i64) -> i64 {
