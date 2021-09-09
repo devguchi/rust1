@@ -17,5 +17,8 @@ fn main() {
     dbg!(s);
     println!("file is {}", file!());
     println!("line is {}", line!());
+
+    debug_assert!(true);
+    debug_assert_eq!(a, 101);
 }
 
