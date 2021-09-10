@@ -1,24 +1,22 @@
 fn main() {
-    let mut a = 1;
-    let b = loop {
-        a += 1;
-        if a > 100 {
-            break a * 2;
-        }
+    let d = Dog{
+        age: 2,
+        name: "dog1".to_string()
     };
-    println!("{}", b);
-    let s = format!("{} {}", "1", "2");
-    println!("{}", s);
-    print!("hoge");
-    print!("hoge2");
-    eprint!("error {}", "ooo");
-    println!("hoge2");
-    let s = [1,2];
-    dbg!(s);
-    println!("file is {}", file!());
-    println!("line is {}", line!());
-
-    debug_assert!(true);
-    debug_assert_eq!(a, 101);
+    println!("{} is {} years old", d.name, d.age());
 }
 
+trait Animal {
+    fn age(&self) -> u32;
+}
+
+struct Dog {
+    age: u32,
+    name: String
+}
+
+impl Animal for Dog {
+    fn age(&self) -> u32 {
+        self.age
+    }
+}
