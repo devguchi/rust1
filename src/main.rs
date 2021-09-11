@@ -1,22 +1,26 @@
 fn main() {
-    let d = Dog{
-        age: 2,
-        name: "dog1".to_string()
+    let h = Hoge {
+        name: "taro".to_string()
     };
-    println!("{} is {} years old", d.name, d.age());
+    println!("1");
+    println!("{}", h.name);
+    println!("2");
+    let h2 = Hoge {
+        name: "jiro".to_string()
+    };
+    println!("{}", h2.name);
+    println!("3");
 }
 
-trait Animal {
-    fn age(&self) -> u32;
-}
-
-struct Dog {
-    age: u32,
+struct Hoge {
     name: String
 }
 
-impl Animal for Dog {
-    fn age(&self) -> u32 {
-        self.age
+impl Drop for Hoge {
+    fn drop(&mut self) {
+        println!("drop {}", self.name);
     }
 }
+
+
+
