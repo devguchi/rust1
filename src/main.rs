@@ -1,26 +1,25 @@
+use std::thread;
+
 fn main() {
-    let h = Hoge {
-        name: "taro".to_string()
-    };
-    println!("1");
-    println!("{}", h.name);
-    println!("2");
-    let h2 = Hoge {
-        name: "jiro".to_string()
-    };
-    println!("{}", h2.name);
-    println!("3");
+    let mut a = 100;
+    thread::spawn(move ||{
+        println!("hoge");
+        for x in 0..100 {
+            println!("hoge {} {}", x, a);
+        }
+    });
+    a = 200;
+    let handle = thread::spawn(move ||{
+        println!("hoge2");
+        for x in 0..10 {
+            a += x;
+            println!("hoge2 {} {}", x, a);
+        }
+    });
+    let _ = handle.join();
+    println!("hoge3 {}", a);
 }
 
-struct Hoge {
-    name: String
-}
-
-impl Drop for Hoge {
-    fn drop(&mut self) {
-        println!("drop {}", self.name);
-    }
-}
 
 
 
