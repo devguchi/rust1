@@ -1,26 +1,20 @@
 use std::io;
 
 fn main() {
-    let a_max:u32 = get_input()[0].parse().unwrap();
-    let b_max:u32 = get_input()[0].parse().unwrap();
-    let c_max:u32 = get_input()[0].parse().unwrap();
-    let mut count = 0;
-    let x:u32 = get_input()[0].parse().unwrap();
-    for a in 0..a_max+1 {
-        if x < 500*a {
-            break;
-        }
-        for b in 0..b_max+1 {
-            if x < 500*a+100*b {
-                break;
-            }
-            let c = (x-500*a-100*b)/50;
-            if c <= c_max {
-                count += 1;
-            }
+    let words = get_input();
+    let n:u32 = words[0].parse().unwrap();
+    let a:u32 = words[1].parse().unwrap();
+    let b:u32 = words[2].parse().unwrap();
+    let mut ans = 0;
+    for i in 1..n+1 {
+        let sum = i.to_string().chars()
+            .map(|c| c.to_digit(10).unwrap())
+            .sum();
+        if a <= sum && sum <= b {
+            ans += i;
         }
     }
-    println!("{}", count);
+    println!("{}", ans);
 }
 
 fn get_input() -> Vec<String> {
@@ -29,4 +23,5 @@ fn get_input() -> Vec<String> {
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
 }
+
 
