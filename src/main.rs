@@ -1,22 +1,13 @@
 use std::io;
+use std::collections::HashSet;
 
 fn main() {
-    let _ = get_input();
-    let words = get_input();
-    let mut a_vec:Vec<u32> = words.iter()
+    let n:u32 = get_input()[0].parse().unwrap();
+    let words = get_input_lines(n);
+    let a_vec:Vec<u32> = words.iter()
         .map(|v| v.parse().unwrap()).collect();
-    a_vec.sort_by(|a,b| b.cmp(a));
-    let mut alice = 0;
-    let mut bob = 0;
-    for (i, a) in a_vec.iter().enumerate() {
-        if i%2 == 0 {
-            alice += a;
-        } else {
-            bob += a;
-        }
-    }
-    let diff = alice - bob;
-    println!("{}", diff);
+    let a: HashSet<u32> = a_vec.into_iter().collect();
+    println!("{}", a.len());
 }
 
 fn get_input() -> Vec<String> {
@@ -24,6 +15,16 @@ fn get_input() -> Vec<String> {
     io::stdin().read_line(&mut word_line).ok();
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
+}
+
+fn get_input_lines(line_len:u32) -> Vec<String> {
+    let mut vec:Vec<String> = vec![];
+    let mut input:Vec<String>;
+    for _ in 0..line_len {
+        input = get_input();
+        vec.append(&mut input);
+    }
+    vec
 }
 
 
