@@ -1,20 +1,22 @@
 use std::io;
 
 fn main() {
+    let _ = get_input();
     let words = get_input();
-    let n:u32 = words[0].parse().unwrap();
-    let a:u32 = words[1].parse().unwrap();
-    let b:u32 = words[2].parse().unwrap();
-    let mut ans = 0;
-    for i in 1..n+1 {
-        let sum = i.to_string().chars()
-            .map(|c| c.to_digit(10).unwrap())
-            .sum();
-        if a <= sum && sum <= b {
-            ans += i;
+    let mut a_vec:Vec<u32> = words.iter()
+        .map(|v| v.parse().unwrap()).collect();
+    a_vec.sort_by(|a,b| b.cmp(a));
+    let mut alice = 0;
+    let mut bob = 0;
+    for (i, a) in a_vec.iter().enumerate() {
+        if i%2 == 0 {
+            alice += a;
+        } else {
+            bob += a;
         }
     }
-    println!("{}", ans);
+    let diff = alice - bob;
+    println!("{}", diff);
 }
 
 fn get_input() -> Vec<String> {
