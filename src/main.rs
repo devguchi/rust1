@@ -1,13 +1,19 @@
 use std::io;
-use std::collections::HashSet;
 
 fn main() {
-    let n:u32 = get_input()[0].parse().unwrap();
-    let words = get_input_lines(n);
-    let a_vec:Vec<u32> = words.iter()
-        .map(|v| v.parse().unwrap()).collect();
-    let a: HashSet<u32> = a_vec.into_iter().collect();
-    println!("{}", a.len());
+    let words = get_input();
+    let n:i64 = words[0].parse().unwrap();
+    let y:i64 = words[1].parse().unwrap();
+    for m in 0..n+1 {
+        for g in 0..n+1-m {
+            let s = n-m-g;
+            if 10000*m+5000*g+1000*s == y {
+                println!("{} {} {}", m,g,s);
+                std::process::exit(0);
+            }
+        }
+    }
+    println!("-1 -1 -1");
 }
 
 fn get_input() -> Vec<String> {
@@ -15,16 +21,6 @@ fn get_input() -> Vec<String> {
     io::stdin().read_line(&mut word_line).ok();
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
-}
-
-fn get_input_lines(line_len:u32) -> Vec<String> {
-    let mut vec:Vec<String> = vec![];
-    let mut input:Vec<String>;
-    for _ in 0..line_len {
-        input = get_input();
-        vec.append(&mut input);
-    }
-    vec
 }
 
 
