@@ -1,19 +1,33 @@
 use std::io;
 
 fn main() {
-    let words = get_input();
-    let n:i64 = words[0].parse().unwrap();
-    let y:i64 = words[1].parse().unwrap();
-    for m in 0..n+1 {
-        for g in 0..n+1-m {
-            let s = n-m-g;
-            if 10000*m+5000*g+1000*s == y {
-                println!("{} {} {}", m,g,s);
-                std::process::exit(0);
+    let s = &get_input()[0];
+    let s_vec:Vec<char> = s.chars().rev().collect();
+    let targets = ["dream", "dreamer", "erase", "eraser"];
+    let mut targets_rev:Vec<String> = vec![]; 
+    for target in &targets {
+        targets_rev.push(target.to_string().chars().rev().collect());
+    }
+    let mut i = 0;
+    'outer:loop {
+        if i > s_vec.len()-1 {
+            println!("YES");
+            std::process::exit(0);
+        }
+        let mut s_str:String;
+        for target in &targets_rev {
+            if i+target.len() > s_vec.len() {
+                continue;
+            }
+            s_str = s_vec[i..i+target.len()].into_iter().collect();
+            if s_str == *target {
+                i += target.len();
+                continue 'outer;
             }
         }
+        println!("NO");
+        std::process::exit(0);
     }
-    println!("-1 -1 -1");
 }
 
 fn get_input() -> Vec<String> {
@@ -22,5 +36,4 @@ fn get_input() -> Vec<String> {
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
 }
-
 
