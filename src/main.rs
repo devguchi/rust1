@@ -1,13 +1,15 @@
 use std::io;
 
 fn main() {
-    let n:usize = get_input()[0].parse().unwrap();
-    let s = &get_input()[0];
-    let s_vec:Vec<char> = s.chars().collect();
-    if s_vec[n-1] == 'o' {
-        println!("Yes");
+    let n:u32 = get_input()[0].parse().unwrap();
+    if  n < 40 {
+        println!("{}", 40-n);
+    } else if n < 70 {
+        println!("{}", 70-n);
+    } else if n < 90 {
+        println!("{}", 90-n);
     } else {
-        println!("No");
+        println!("expert");
     }
 }
 
@@ -17,4 +19,5 @@ fn get_input() -> Vec<String> {
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
 }
+
 
