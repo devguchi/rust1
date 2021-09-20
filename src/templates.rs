@@ -16,3 +16,9 @@ fn get_input_lines(line_len:u32) -> Vec<String> {
     }
     vec
 }
+
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
