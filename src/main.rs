@@ -4,7 +4,13 @@ fn main() {
     let numbers:Vec<i64> = get_input_i64();
     let a = numbers[0];
     let b = numbers[1];
-    println!("{}", a^b);
+    if 0 < a && b == 0 {
+        println!("Gold");
+    } else if a == 0 && 0 < b {
+        println!("Silver");
+    } else if 0 < a && 0 < b {
+        println!("Alloy");
+    }
 }
 
 fn get_input() -> Vec<String> {
