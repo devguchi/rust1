@@ -1,14 +1,10 @@
 use std::io;
 
 fn main() {
-    let n:i64 = get_input_i64()[0];
-    let mut ans = 8;
-    if 1 <= n && n <= 125 {
-        ans = 4;
-    } else if 126 <= n && n <= 211 {
-        ans = 6;
-    }
-    println!("{}", ans);
+    let numbers:Vec<i64> = get_input_i64();
+    let a = numbers[0];
+    let b = numbers[1];
+    println!("{}", a^b);
 }
 
 fn get_input() -> Vec<String> {
