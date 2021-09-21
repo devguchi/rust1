@@ -2,10 +2,17 @@ use std::io;
 
 fn main() {
     let numbers:Vec<i64> = get_input_i64();
-    let a = numbers[0] as f64;
-    let b = numbers[1] as f64;
-    let c = (a-b)/3.0+b;
-    println!("{}",c);
+    let n = numbers[0];
+    let a = numbers[1];
+    let x = numbers[2];
+    let y = numbers[3];
+    let mut _ans = 0;
+    if n > a {
+        _ans = x*a+y*(n-a);
+    } else {
+        _ans = x*n;
+    }
+    println!("{}", _ans);
 }
 
 fn get_input() -> Vec<String> {
