@@ -2,14 +2,12 @@ use std::io;
 
 fn main() {
     let numbers = get_input_i64();
-    let a = numbers[0];
-    let b = numbers[1];
-    let c = numbers[2];
-    if a.pow(2)+b.pow(2) < c.pow(2) {
-        println!("Yes");
-    } else {
-        println!("No");
+    let n = numbers[0];
+    let mut ans = n-2+1;
+    if ans < 0 {
+        ans = 0;
     }
+    println!("{}", ans);
 }
 
 fn get_input() -> Vec<String> {
