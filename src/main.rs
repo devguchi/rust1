@@ -1,13 +1,14 @@
 use std::io;
 
 fn main() {
-    let ab = get_input_i64();
-    let cd = get_input_i64();
-    // let a = ab[0];
-    let b = ab[1];
-    let c = cd[0];
-    // let d = cd[1];
-    println!("{}", b-c);
+    let mh = get_input_i64();
+    let m = mh[0];
+    let h = mh[1];
+    if h%m == 0 {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
 
 fn get_input() -> Vec<String> {
