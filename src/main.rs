@@ -1,10 +1,12 @@
 use std::io;
 
 fn main() {
-    let ab = get_input_i64();
-    let a = ab[0] as f64;
-    let b = ab[1] as f64;
-    let ans = (a-b)/a*100.0;
+    let num = get_input_i64();
+    let x = num[0] as f64;
+    let mut ans = ((x/100.0).ceil()*100.0-x) as i64;
+    if ans == 0 {
+        ans = 100;
+    }
     println!("{}", ans);
 }
 
