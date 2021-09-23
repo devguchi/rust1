@@ -2,15 +2,10 @@ use std::io;
 
 fn main() {
     let numbers = get_input_i64();
-    let n = numbers[0] as f64;
-    let price = (1.08*n) as i64;
-    if price < 206 {
-        println!("Yay!");
-    } else if price == 206 {
-        println!("so-so");
-    } else {
-        println!(":(");
-    }
+    let a = numbers[0] as f64;
+    let b = numbers[1] as f64;
+    let kcal = a/100.0*b;
+    println!("{}", kcal);
 }
 
 fn get_input() -> Vec<String> {
