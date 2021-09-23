@@ -1,9 +1,13 @@
 use std::io;
 
 fn main() {
-    let words = get_input();
-    let s:Vec<char> = words[0].chars().collect();
-    println!("{}{}{}", s[1], s[2], s[0]);
+    let ab = get_input_i64();
+    let cd = get_input_i64();
+    // let a = ab[0];
+    let b = ab[1];
+    let c = cd[0];
+    // let d = cd[1];
+    println!("{}", b-c);
 }
 
 fn get_input() -> Vec<String> {
@@ -12,4 +16,10 @@ fn get_input() -> Vec<String> {
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
 }
+
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
 
