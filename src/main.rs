@@ -1,14 +1,12 @@
 use std::io;
 
 fn main() {
-    let numbers = get_input_i64();
-    let a = numbers[0] as f64;
-    let b = numbers[1] as f64;
-    if b/6.0 <= a && a <= b {
-        println!("Yes");
-    } else {
-        println!("No");
-    }
+    let mut numbers = get_input_i64();
+    numbers.sort_by(|a,b| b.cmp(a));
+    let a = numbers[0];
+    let b = numbers[1];
+    println!("{}", a+b);
+
 }
 
 fn get_input() -> Vec<String> {
