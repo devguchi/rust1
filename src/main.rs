@@ -1,12 +1,16 @@
 use std::io;
 
 fn main() {
-    let mut numbers = get_input_i64();
-    numbers.sort_by(|a,b| b.cmp(a));
-    let a = numbers[0];
-    let b = numbers[1];
-    println!("{}", a+b);
-
+    let numbers = get_input_i64();
+    let n = numbers[0] as f64;
+    let price = (1.08*n) as i64;
+    if price < 206 {
+        println!("Yay!");
+    } else if price == 206 {
+        println!("so-so");
+    } else {
+        println!(":(");
+    }
 }
 
 fn get_input() -> Vec<String> {
