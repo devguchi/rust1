@@ -2,12 +2,17 @@ use std::io;
 
 fn main() {
     let numbers = get_input_i64();
-    let x = numbers[0];
-    let y = numbers[1];
-    if x == y {
-        println!("{}", x);
+    let a = numbers[0];
+    let b = numbers[1];
+    let c = numbers[2];
+    if a == b {
+        println!("{}", c);
+    } else if a == c {
+        println!("{}", b);
+    } else if b == c {
+        println!("{}", a);
     } else {
-        println!("{}", 3-x-y);
+        println!("0");
     }
 }
 
