@@ -5,15 +5,8 @@ fn main() {
     let a = numbers[0];
     let b = numbers[1];
     let c = numbers[2];
-    if a == b {
-        println!("{}", c);
-    } else if a == c {
-        println!("{}", b);
-    } else if b == c {
-        println!("{}", a);
-    } else {
-        println!("0");
-    }
+    let ans = (7-a)+(7-b)+(7-c);
+    println!("{}", ans);
 }
 
 fn get_input() -> Vec<String> {
