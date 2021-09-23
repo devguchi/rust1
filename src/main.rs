@@ -1,13 +1,18 @@
 use std::io;
 
 fn main() {
-    let mh = get_input_i64();
-    let m = mh[0];
-    let h = mh[1];
-    if h%m == 0 {
-        println!("Yes");
+    let ab = get_input_i64();
+    let a = ab[0];
+    let b = ab[1];
+    let ab = a+b;
+    if ab >= 15 && b >= 8 {
+        println!("1");
+    } else if ab >= 10 && b >= 3 {
+        println!("2");
+    } else if ab >= 3 {
+        println!("3");
     } else {
-        println!("No");
+        println!("4");
     }
 }
 
