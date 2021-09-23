@@ -2,9 +2,14 @@ use std::io;
 
 fn main() {
     let numbers = get_input_i64();
-    let n = numbers[0] as f64;
-    let ans = (n/100.0).ceil();
-    println!("{}", ans);
+    let a = numbers[0];
+    let b = numbers[1];
+    let c = numbers[2];
+    if a.pow(2)+b.pow(2) < c.pow(2) {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
 
 fn get_input() -> Vec<String> {
@@ -18,4 +23,5 @@ fn get_input_i64() -> Vec<i64> {
     let words = get_input();
     words.iter().map(|word| word.parse().unwrap()).collect()
 }
+
 
