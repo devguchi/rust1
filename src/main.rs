@@ -2,10 +2,13 @@ use std::io;
 
 fn main() {
     let numbers = get_input_i64();
-    let a = numbers[0] as f64;
-    let b = numbers[1] as f64;
-    let kcal = a/100.0*b;
-    println!("{}", kcal);
+    let x = numbers[0];
+    let y = numbers[1];
+    if x == y {
+        println!("{}", x);
+    } else {
+        println!("{}", 3-x-y);
+    }
 }
 
 fn get_input() -> Vec<String> {
