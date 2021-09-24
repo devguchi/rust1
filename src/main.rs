@@ -1,16 +1,15 @@
 use std::io;
-use std::collections::HashSet;
 
 fn main() {
-    let words = get_input();
-    let s:Vec<char> = words[0].chars().collect();
-    let unique: HashSet<char> = s.into_iter().collect();
-    let ans = if unique.len() == 1 {
-        "Won"
+    let mut num = get_input_i64();
+    num.sort();
+    let x = num[0];
+    let y = num[1];
+    if x+3 > y {
+        println!("Yes");
     } else {
-        "Lost"
-    };
-    println!("{}", ans);
+        println!("No");
+    }
 }
 
 fn get_input() -> Vec<String> {
@@ -19,4 +18,10 @@ fn get_input() -> Vec<String> {
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
 }
+
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
 
