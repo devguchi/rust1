@@ -22,3 +22,8 @@ fn get_input_i64() -> Vec<i64> {
     words.iter().map(|word| word.parse().unwrap()).collect()
 }
 
+// 各桁の合計
+fn digits_sum(s:&String) -> u32 {
+    s.chars().map(|c| c.to_digit(10).unwrap()).sum()
+}
+
