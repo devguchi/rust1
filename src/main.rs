@@ -2,16 +2,22 @@ use std::io;
 
 fn main() {
     let num = get_input_i64();
-    let v = num[0] as f64;
-    let t = num[1] as f64;
-    let s = num[2] as f64;
-    let d = num[3] as f64;
-    let td = v*t;
-    let sd = v*s;
-    if d < td || sd < d {
-        println!("Yes");
+    let mut a = num[0];
+    let mut b = num[1];
+    let c = num[2];
+    if c > 0 {
+        b -= 1;
     } else {
-        println!("No");
+        a -= 1;
+    }
+    if a > b {
+        println!("Takahashi");
+    } else if b > a {
+        println!("Aoki");
+    } else if c > 0 {
+        println!("Aoki");
+    } else {
+        println!("Takahashi");
     }
 }
 
