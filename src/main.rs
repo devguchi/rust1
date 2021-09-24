@@ -1,18 +1,11 @@
 use std::io;
 
 fn main() {
-    let words = get_input();
-    let a_sum = digits_sum(&words[0]);
-    let b_sum = digits_sum(&words[1]);
-    if a_sum > b_sum {
-        println!("{}", a_sum);
-    } else {
-        println!("{}", b_sum);
-    }
-}
-
-fn digits_sum(s:&String) -> u32 {
-    s.chars().map(|c| c.to_digit(10).unwrap()).sum()
+    let num = get_input_i64();
+    let n = num[0];
+    let w = num[1];
+    let ans = n/w;
+    println!("{}", ans);
 }
 
 fn get_input() -> Vec<String> {
@@ -21,4 +14,10 @@ fn get_input() -> Vec<String> {
     let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.to_string()).collect()
 }
+
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
 
