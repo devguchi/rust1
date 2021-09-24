@@ -6,9 +6,9 @@ fn main() {
     let s:Vec<char> = words[0].chars().collect();
     let unique: HashSet<char> = s.into_iter().collect();
     let ans = if unique.len() == 1 {
-        "Won"
+        "Yes"
     } else {
-        "Lost"
+        "No"
     };
     println!("{}", ans);
 }
