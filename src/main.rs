@@ -1,11 +1,12 @@
 use std::io;
 
 fn main() {
-    let num = get_input_i64();
-    let n = num[0];
-    let w = num[1];
-    let ans = n/w;
-    println!("{}", ans);
+    let words = get_input_lines(4);
+    let t:Vec<char> = words[3].chars().collect();
+    for tc in t.iter() {
+        let i = *tc as usize - 48 - 1;
+        print!("{}", &words[i]);
+    }
 }
 
 fn get_input() -> Vec<String> {
@@ -15,9 +16,13 @@ fn get_input() -> Vec<String> {
     words.iter().map(|word| word.to_string()).collect()
 }
 
-fn get_input_i64() -> Vec<i64> {
-    let words = get_input();
-    words.iter().map(|word| word.parse().unwrap()).collect()
+fn get_input_lines(line_len:u32) -> Vec<String> {
+    let mut vec:Vec<String> = vec![];
+    let mut input:Vec<String>;
+    for _ in 0..line_len {
+        input = get_input();
+        vec.append(&mut input);
+    }
+    vec
 }
-
 
