@@ -1,4 +1,5 @@
 use std::io;
+use std::collections::HashSet;
 
 fn get_input() -> Vec<String> {
     let mut word_line = String::new();
@@ -20,6 +21,17 @@ fn get_input_lines(line_len:u32) -> Vec<String> {
 fn get_input_i64() -> Vec<i64> {
     let words = get_input();
     words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
+// Vec<String> -> HashSet<String>
+fn vec_string_hashset(words:Vec<String>) -> HashSet<String> {
+    words.into_iter().collect()
+}
+
+// Vec<String> -> HashSet<char>
+fn string_hashset(s:String) -> HashSet<char> {
+    let vec:Vec<char> = s.chars().collect();
+    vec.into_iter().collect()
 }
 
 // 各桁の合計
