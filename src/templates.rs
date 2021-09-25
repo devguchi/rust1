@@ -24,13 +24,13 @@ fn get_input_i64() -> Vec<i64> {
 }
 
 // Vec<String> -> HashSet<String>
-fn vec_string_hashset(words:Vec<String>) -> HashSet<String> {
-    words.into_iter().collect()
+fn vec_string_hashset(words:&Vec<String>) -> HashSet<String> {
+    words.clone().into_iter().collect()
 }
 
 // Vec<String> -> HashSet<char>
-fn string_hashset(s:String) -> HashSet<char> {
-    let vec:Vec<char> = s.chars().collect();
+fn string_hashset_char(s:&String) -> HashSet<char> {
+    let vec:Vec<char> = s.clone().chars().collect();
     vec.into_iter().collect()
 }
 

@@ -3,9 +3,13 @@ use std::collections::HashSet;
 
 fn main() {
     let words = get_input_lines(3);
-    let hs = vec_string_hashset(words);
-    let hc = string_hashset("hoge".to_string());
-    println!("{:?} {:?}", hs, hc);
+    let all_contests:HashSet<String> = vec!["ABC", "ARC", "AGC", "AHC"]
+        .into_iter().map(|s| s.to_string()).collect();
+    let contests = vec_string_hashset(&words);
+    let diff = all_contests.difference(&contests);
+    for d in diff.into_iter() {
+        print!("{}", d);
+    }
 }
 
 fn get_input() -> Vec<String> {
@@ -25,11 +29,7 @@ fn get_input_lines(line_len:u32) -> Vec<String> {
     vec
 }
 
-fn vec_string_hashset(words:Vec<String>) -> HashSet<String> {
-    words.into_iter().collect()
+fn vec_string_hashset(words:&Vec<String>) -> HashSet<String> {
+    words.clone().into_iter().collect()
 }
 
-fn string_hashset(s:String) -> HashSet<char> {
-    let vec:Vec<char> = s.chars().collect();
-    vec.into_iter().collect()
-}
