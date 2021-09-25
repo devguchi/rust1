@@ -1,19 +1,16 @@
 use std::io;
-use std::collections::HashSet;
 
 fn main() {
-    let n = get_input_i64()[0] as usize;
-    let mut v:Vec<String> = vec![];
-    for _ in 0..n {
-        let words = get_input();
-        let name = words[0].clone()+&words[1];
-        v.push(name);
-    }
-    let h:HashSet<String> = v.into_iter().collect();
-    if h.len() < n {
-        println!("Yes");
-    } else {
-        println!("No");
+    let n = get_input_i64()[0];
+    let mut k:u32 = 1;
+    let base:i64 = 2;
+    loop {
+        let num = base.pow(k);
+        if num > n {
+            println!("{}", k-1);
+            std::process::exit(0);
+        }
+        k += 1;
     }
 }
 
@@ -28,4 +25,5 @@ fn get_input_i64() -> Vec<i64> {
     let words = get_input();
     words.iter().map(|word| word.parse().unwrap()).collect()
 }
+
 
