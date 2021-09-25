@@ -2,13 +2,18 @@ use std::io;
 use std::collections::HashSet;
 
 fn main() {
-    let words = get_input_lines(3);
-    let all_contests:HashSet<String> = vec!["ABC", "ARC", "AGC", "AHC"]
-        .into_iter().map(|s| s.to_string()).collect();
-    let contests = vec_string_hashset(&words);
-    let diff = all_contests.difference(&contests);
-    for d in diff.into_iter() {
-        print!("{}", d);
+    let n = get_input_i64()[0] as usize;
+    let mut v:Vec<String> = vec![];
+    for _ in 0..n {
+        let words = get_input();
+        let name = words[0].clone()+&words[1];
+        v.push(name);
+    }
+    let h:HashSet<String> = v.into_iter().collect();
+    if h.len() < n {
+        println!("Yes");
+    } else {
+        println!("No");
     }
 }
 
@@ -19,17 +24,8 @@ fn get_input() -> Vec<String> {
     words.iter().map(|word| word.to_string()).collect()
 }
 
-fn get_input_lines(line_len:u32) -> Vec<String> {
-    let mut vec:Vec<String> = vec![];
-    let mut input:Vec<String>;
-    for _ in 0..line_len {
-        input = get_input();
-        vec.append(&mut input);
-    }
-    vec
-}
-
-fn vec_string_hashset(words:&Vec<String>) -> HashSet<String> {
-    words.clone().into_iter().collect()
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
 }
 

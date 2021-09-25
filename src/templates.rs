@@ -8,6 +8,11 @@ fn get_input() -> Vec<String> {
     words.iter().map(|word| word.to_string()).collect()
 }
 
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
 fn get_input_lines(line_len:u32) -> Vec<String> {
     let mut vec:Vec<String> = vec![];
     let mut input:Vec<String>;
@@ -18,9 +23,14 @@ fn get_input_lines(line_len:u32) -> Vec<String> {
     vec
 }
 
-fn get_input_i64() -> Vec<i64> {
-    let words = get_input();
-    words.iter().map(|word| word.parse().unwrap()).collect()
+fn get_input_i64_lines(line_len:u32) -> Vec<i64> {
+    let mut vec:Vec<i64> = vec![];
+    let mut input:Vec<i64>;
+    for _ in 0..line_len {
+        input = get_input_i64();
+        vec.append(&mut input);
+    }
+    vec
 }
 
 // Vec<String> -> HashSet<String>
