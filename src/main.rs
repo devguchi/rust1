@@ -1,13 +1,24 @@
 use std::io;
+use std::collections::HashSet;
 
 fn main() {
-    let _ = get_input_i64()[0];
-    let a = get_input_i64();
-    let mut a2 = a.clone();
-    a2.sort_by(|a,b| b.cmp(a));
-    let score = a2[1];
-    let idx = a.iter().position(|&x| x == score).unwrap();
-    println!("{}", idx+1);
+    let s = &get_input()[0];
+    let v = string_vec_u32(&s);
+    let h:HashSet<u32> = v.clone().into_iter().collect();
+    if h.len() < 2 {
+        println!("Weak");
+        std::process::exit(0);
+    }
+    let next: [u32; 10] = [1,2,3,4,5,6,7,8,9,0];
+    let mut prev: usize = 100;
+    for i in v.iter() {
+        if prev < 10 && *i != next[prev] {
+            println!("Strong");
+            std::process::exit(0);
+        }
+        prev = *i as usize;
+    }
+    println!("Weak");
 }
 
 fn get_input() -> Vec<String> {
@@ -17,8 +28,7 @@ fn get_input() -> Vec<String> {
     words.iter().map(|word| word.to_string()).collect()
 }
 
-fn get_input_i64() -> Vec<i64> {
-    let words = get_input();
-    words.iter().map(|word| word.parse().unwrap()).collect()
+fn string_vec_u32(s:&String) -> Vec<u32> {
+    s.chars().map(|c| c.to_digit(10).unwrap()).collect()
 }
 

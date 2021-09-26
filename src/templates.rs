@@ -49,6 +49,11 @@ fn digits_sum(s:&String) -> u32 {
     s.chars().map(|c| c.to_digit(10).unwrap()).sum()
 }
 
+// 各桁をu32のvecにする
+fn string_vec_u32(s:&String) -> Vec<u32> {
+    s.chars().map(|c| c.to_digit(10).unwrap()).collect()
+}
+
 // a-zのcharのvec
 fn a_z() -> Vec<char> {
     (b'a'..=b'z').map(|b| b as char).collect()
