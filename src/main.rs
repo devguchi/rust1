@@ -1,20 +1,20 @@
 use std::io;
-use std::collections::HashSet;
 
 fn main() {
-    let n = get_input_i64()[0] as usize;
-    let mut v:Vec<String> = vec![];
-    for _ in 0..n {
-        let words = get_input();
-        let name = words[0].clone()+"+"+&words[1];
-        v.push(name);
+    let n = get_input_i64();
+    let s = n[0];
+    let t = n[1];
+    let mut ans = 0;
+    for a in 0..101 {
+        for b in 0..101 {
+            for c in 0..101 {
+                if a+b+c <= s && a*b*c <= t {
+                    ans += 1;
+                }
+            }
+        }
     }
-    let h:HashSet<String> = v.into_iter().collect();
-    if h.len() < n {
-        println!("Yes");
-    } else {
-        println!("No");
-    }
+    println!("{}", ans);
 }
 
 fn get_input() -> Vec<String> {
