@@ -1,15 +1,22 @@
 use std::io;
 
 fn main() {
-    let _ = get_input_i64()[0];
-    let s = &get_input()[0];
-    let vc:Vec<char> = s.chars().collect();
-    let idx = vc.iter().position(|&x| x == '1').unwrap();
-    let mut loser = "Takahashi";
-    if idx % 2 == 1 {
-        loser = "Aoki";
+    let num = get_input_i64();
+    let _ = num[0];
+    let x = num[1];
+    let a = get_input_i64();
+    let mut total = 0;
+    let mut ans = "No";
+    for (i, val) in a.iter().enumerate() {
+        total += *val;
+        if (i+1)%2 == 0 {
+            total -= 1;
+        }
     }
-    println!("{}", loser);
+    if total <= x {
+        ans = "Yes";
+    }
+    println!("{}", ans);
 }
 
 fn get_input() -> Vec<String> {
