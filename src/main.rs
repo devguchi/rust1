@@ -1,19 +1,37 @@
+use std::io;
+
 fn main() {
-    print!("{} ", fact(20));
+    let mut p = get_input_i64()[0];
+    let mut total_num = 0;
+    for i in 0..11 {
+        let unit_price = fact(10-i);
+        for num in 0..100 {
+            if unit_price * num > p {
+                total_num += num-1;
+                p -= unit_price * (num-1);
+                break;
+            } 
+        }
+    }
+    println!("{}", total_num);
 }
 
-fn fact(n:usize) -> i64 {
-    let mut memo: [i64; 1000] = [1; 1000];
-    _fact(n, &mut memo)
+fn get_input() -> Vec<String> {
+    let mut word_line = String::new();
+    io::stdin().read_line(&mut word_line).ok();
+    let words: Vec<&str> = word_line.split_whitespace().collect();
+    words.iter().map(|word| word.to_string()).collect()
 }
 
-fn _fact(n:usize, memo: &mut [i64; 1000]) -> i64 {
-    if n < 2 || memo[n] > 1 {
-        memo[n]
+fn get_input_i64() -> Vec<i64> {
+    let words = get_input();
+    words.iter().map(|word| word.parse().unwrap()).collect()
+}
+
+fn fact(n:i64) -> i64 {
+    if n < 1 {
+        1
     } else {
-        memo[n] = _fact(n-1, memo) * (n as i64);
-        memo[n]
+        fact(n-1) * n
     }
 }
-
-
