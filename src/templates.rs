@@ -59,3 +59,11 @@ fn a_z() -> Vec<char> {
     (b'a'..=b'z').map(|b| b as char).collect()
 }
 
+// 階乗（factorial）
+fn fact(n:i64) -> i64 {
+    if n < 1 {
+        1
+    } else {
+        fact(n-1) * n
+    }
+}
