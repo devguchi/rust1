@@ -67,3 +67,9 @@ fn fact(n:i64) -> i64 {
         fact(n-1) * n
     }
 }
+
+// 型名の表示
+fn typename<T>(_: T) {
+    println!("{}", std::any::type_name::<T>());
+}
+

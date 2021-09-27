@@ -1,12 +1,20 @@
+mod exectime;
+
 fn main() {
-    println!("{}", fact(3));
+    let start = exectime::start();
+    for i in 0..40 {
+        print!("{} ", fib(i));
+    }
+    exectime::end(start);
 }
 
-fn fact(n:i64) -> i64 {
-    if n < 1 {
+fn fib(n:i64) -> i64 {
+    if n == 0 {
+        0
+    } else if n == 1 {
         1
     } else {
-        fact(n-1) * n
+        fib(n-1) + fib(n-2)
     }
 }
 
