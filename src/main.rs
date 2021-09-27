@@ -1,20 +1,19 @@
-mod exectime;
-
 fn main() {
-    let start = exectime::start();
-    for i in 0..40 {
-        print!("{} ", fib(i));
-    }
-    exectime::end(start);
+    print!("{} ", fact(20));
 }
 
-fn fib(n:i64) -> i64 {
-    if n == 0 {
-        0
-    } else if n == 1 {
-        1
+fn fact(n:usize) -> i64 {
+    let mut memo: [i64; 1000] = [1; 1000];
+    _fact(n, &mut memo)
+}
+
+fn _fact(n:usize, memo: &mut [i64; 1000]) -> i64 {
+    if n < 2 || memo[n] > 1 {
+        memo[n]
     } else {
-        fib(n-1) + fib(n-2)
+        memo[n] = _fact(n-1, memo) * (n as i64);
+        memo[n]
     }
 }
+
 

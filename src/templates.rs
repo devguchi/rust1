@@ -59,12 +59,27 @@ fn a_z() -> Vec<char> {
     (b'a'..=b'z').map(|b| b as char).collect()
 }
 
-// 階乗（factorial）
+// 階乗（再帰）
 fn fact(n:i64) -> i64 {
     if n < 1 {
         1
     } else {
         fact(n-1) * n
+    }
+}
+
+// 階乗（DP）
+fn fact(n:usize) -> i64 {
+    let mut memo: [i64; 1000] = [1; 1000];
+    _fact(n, &mut memo)
+}
+
+fn _fact(n:usize, memo: &mut [i64; 1000]) -> i64 {
+    if n < 2 || memo[n] > 1 {
+        memo[n]
+    } else {
+        memo[n] = _fact(n-1, memo) * (n as i64);
+        memo[n]
     }
 }
 
