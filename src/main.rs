@@ -1,19 +1,17 @@
 use std::io;
 
 fn main() {
-    let mut p = get_input_i64()[0];
-    let mut total_num = 0;
-    for i in 0..11 {
-        let unit_price = fact(10-i);
-        for num in 0..100 {
-            if unit_price * num > p {
-                total_num += num-1;
-                p -= unit_price * (num-1);
-                break;
-            } 
-        }
+    let num = get_input_i64();
+    let a = num[0] as f64;
+    let b = num[1] as f64;
+    let c = num[2] as f64;
+    let d = num[3] as f64;
+    if b >= c*d {
+        println!("-1");
+    } else {
+        let ans = (a/(c*d-b)).ceil();
+        println!("{}", ans);
     }
-    println!("{}", total_num);
 }
 
 fn get_input() -> Vec<String> {
@@ -28,10 +26,4 @@ fn get_input_i64() -> Vec<i64> {
     words.iter().map(|word| word.parse().unwrap()).collect()
 }
 
-fn fact(n:i64) -> i64 {
-    if n < 1 {
-        1
-    } else {
-        fact(n-1) * n
-    }
-}
+
