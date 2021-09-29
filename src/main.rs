@@ -1,16 +1,16 @@
 use std::io;
 
 fn main() {
-    let num = get_input_i64();
-    let a = num[0] as f64;
-    let b = num[1] as f64;
-    let c = num[2] as f64;
-    let d = num[3] as f64;
-    if b >= c*d {
-        println!("-1");
-    } else {
-        let ans = (a/(c*d-b)).ceil();
-        println!("{}", ans);
+    let n = get_input_i64()[0];
+    let mut day = 0;
+    let mut total = 0;
+    loop {
+        day += 1;
+        total += day;
+        if total >= n {
+            println!("{}", day);
+            std::process::exit(0);
+        }
     }
 }
 
@@ -25,5 +25,4 @@ fn get_input_i64() -> Vec<i64> {
     let words = get_input();
     words.iter().map(|word| word.parse().unwrap()).collect()
 }
-
 
