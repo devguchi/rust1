@@ -1,16 +1,14 @@
 use std::io;
+use std::collections::HashSet;
 
 fn main() {
     let n = get_input_i64()[0];
-    let mut day = 0;
-    let mut total = 0;
-    loop {
-        day += 1;
-        total += day;
-        if total >= n {
-            println!("{}", day);
-            std::process::exit(0);
-        }
+    let a = get_input_i64();
+    let ah:HashSet<i64> = a.into_iter().collect();
+    if ah.len() == n as usize {
+        println!("Yes");
+    } else {
+        println!("No");
     }
 }
 
