@@ -9,7 +9,9 @@ fn get_input() -> Vec<String> {
 }
 
 fn get_input_i64() -> Vec<i64> {
-    let words = get_input();
+    let mut word_line = String::new();
+    io::stdin().read_line(&mut word_line).ok();
+    let words: Vec<&str> = word_line.split_whitespace().collect();
     words.iter().map(|word| word.parse().unwrap()).collect()
 }
 
@@ -57,6 +59,16 @@ fn string_vec_u32(s:&String) -> Vec<u32> {
 // a-zのcharのvec
 fn a_z() -> Vec<char> {
     (b'a'..=b'z').map(|b| b as char).collect()
+}
+
+// 最小値
+fn cmin(a:i64, b:i64) -> i64 {
+    if a > b { b } else { a }
+}
+
+// 最大値
+fn cmax(a:i64, b:i64) -> i64 {
+    if a > b { a } else { b }
 }
 
 // 階乗（再帰）
