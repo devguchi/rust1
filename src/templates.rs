@@ -61,16 +61,6 @@ fn a_z() -> Vec<char> {
     (b'a'..=b'z').map(|b| b as char).collect()
 }
 
-// 最小値
-fn cmin(a:i64, b:i64) -> i64 {
-    if a > b { b } else { a }
-}
-
-// 最大値
-fn cmax(a:i64, b:i64) -> i64 {
-    if a > b { a } else { b }
-}
-
 // 階乗（再帰）
 fn fact(n:i64) -> i64 {
     if n < 1 {
