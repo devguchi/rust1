@@ -3,28 +3,23 @@ use std::cmp::min;
 
 
 fn main() {
-    let n = get_input_i64()[0];
-    let mut memo: [i64; 100010] = [-1; 100010];
-    println!("{}", rec(n, &mut memo));
-}
-
-fn rec(n:i64, memo: &mut [i64; 100010]) -> i64 {
-    let nu = n as usize;
-    if n == 0 {return 0;}
-    if memo[nu] != -1 {return memo[nu];}
-    let mut res = n.clone();
-    let mut pow6 = 6;
-    let mut pow9 = 9;
-    while pow6 <= n {
-        res = min(res, rec(n-pow6, memo)+1);
-        pow6 *= 6;
+    let n = get_input_i64()[0] as usize;
+    let mut dp:[i64; 100010] = [std::i64::MAX; 100010];
+    dp[0] = 0;
+    for i in 1..n+1 {
+        let iu = i as usize;
+        let mut pow6 = 1;
+        let mut pow9 = 1;
+        while pow6 <= i {
+            dp[iu] = min(dp[iu], dp[iu-pow6]+1);
+            pow6 *= 6;
+        }
+        while pow9 <= i {
+            dp[iu] = min(dp[iu], dp[iu-pow9]+1);
+            pow9 *= 9;
+        }
     }
-    while pow9 <= n {
-        res = min(res, rec(n-pow9, memo)+1);
-        pow9 *= 9;
-    }
-    memo[nu] = res;
-    res
+    println!("{}", dp[n]);
 }
 
 fn get_input_i64() -> Vec<i64> {
