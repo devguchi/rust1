@@ -1,12 +1,13 @@
 use std::io;
 
 fn main() {
-    let n = get_input_i64()[0] as usize;
-    let a = get_input_i64();
+    let nk = get_input_i64();
+    let n = nk[0];
+    let k = nk[1];
     let mut total = 0;
-    for i in 0..n {
-        if a[i] > 10 {
-            total += a[i] - 10;
+    for i in 1..n+1 {
+        for j in 1..k+1 {
+            total += 100*i+j;
         }
     }
     println!("{}", total);
