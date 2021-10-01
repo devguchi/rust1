@@ -1,11 +1,10 @@
 use std::io;
-use std::cmp::min;
 
 fn main() {
-    let a = get_input_i64();
-    let min12 = min(a[0], a[1]);
-    let min34 = min(a[2], a[3]);
-    println!("{}", min(min12, min34));
+    let ab = get_input_i64();
+    let cd = get_input_i64();
+    let ans = ab[0]*cd[1]-ab[1]*cd[0];
+    println!("{}", ans);
 }
 
 fn get_input_i64() -> Vec<i64> {
