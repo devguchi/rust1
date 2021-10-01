@@ -1,17 +1,22 @@
 use std::io;
 
+struct Mountain {
+    name: String,
+    height: i64
+}
+
 fn main() {
-    let s = &get_input()[0];
-    let sv:Vec<char> = s.chars().rev().collect();
-    for i in sv.iter() {
-        if *i == '6' {
-            print!("9");
-        } else if *i == '9' {
-            print!("6");
-        } else {
-            print!("{}", i);
-        }
+    let n = get_input()[0].parse().unwrap();
+    let mut mountains: Vec<Mountain> = vec![];
+    for _ in 0..n {
+        let m = get_input();
+        mountains.push(Mountain {
+            name: m[0].clone(),
+            height: m[1].parse().unwrap()
+        });
     }
+    mountains.sort_by(|a,b| b.height.cmp(&a.height));
+    println!("{}", mountains[1].name);
 }
 
 fn get_input() -> Vec<String> {
