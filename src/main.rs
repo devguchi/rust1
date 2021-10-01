@@ -1,10 +1,15 @@
 use std::io;
 
 fn main() {
-    let ab = get_input_i64();
-    let cd = get_input_i64();
-    let ans = ab[0]*cd[1]-ab[1]*cd[0];
-    println!("{}", ans);
+    let n = get_input_i64()[0] as usize;
+    let a = get_input_i64();
+    let mut total = 0;
+    for i in 0..n {
+        if a[i] > 10 {
+            total += a[i] - 10;
+        }
+    }
+    println!("{}", total);
 }
 
 fn get_input_i64() -> Vec<i64> {
