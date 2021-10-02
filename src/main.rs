@@ -1,10 +1,8 @@
 use std::io;
 
 fn main() {
-    let ab = get_input();
-    let a:i64 = ab[0].parse().unwrap();
-    let b:i64 = ab[1].parse().unwrap();
-    println!("{}", (2*a+100)-b);
+    let n:i64 = get_input()[0].parse().unwrap();
+    println!("{}", if n%2 == 1 { "Black" } else { "White" });
 }
 
 fn get_input() -> Vec<String> {
