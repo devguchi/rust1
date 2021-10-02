@@ -1,8 +1,10 @@
 use std::io;
 
 fn main() {
-    let x = get_input()[0].parse().unwrap();
-    println!("{}", if x >= 0 { x } else { 0 });
+    let ab = get_input();
+    let a:i64 = ab[0].parse().unwrap();
+    let b:i64 = ab[1].parse().unwrap();
+    println!("{}", (2*a+100)-b);
 }
 
 fn get_input() -> Vec<String> {
