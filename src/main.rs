@@ -1,17 +1,20 @@
 use std::io;
 
 fn main() {
-    let nab = get_input_i64();
-    let n = nab[0];
-    let a = nab[1];
-    let b = nab[2];
-    println!("{}", n-a+b);
+    let s = &get_input()[0];
+    let len = s.len();
+    let tail = &s[len-1..len];
+    let mut ans = s.clone()+"s";
+    if tail == "s" {
+        ans = s.clone()+"es";
+    }
+    println!("{}", ans);
 }
 
-fn get_input_i64() -> Vec<i64> {
+fn get_input() -> Vec<String> {
     let mut word_line = String::new();
     io::stdin().read_line(&mut word_line).ok();
     let words: Vec<&str> = word_line.split_whitespace().collect();
-    words.iter().map(|word| word.parse().unwrap()).collect()
+    words.iter().map(|word| word.to_string()).collect()
 }
 
