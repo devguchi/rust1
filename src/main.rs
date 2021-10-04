@@ -1,14 +1,8 @@
 use std::io;
 
 fn main() {
-    let s = &get_input()[0];
-    let len = s.len();
-    let tail = &s[len-1..len];
-    let mut ans = s.clone()+"s";
-    if tail == "s" {
-        ans = s.clone()+"es";
-    }
-    println!("{}", ans);
+    let s:i64 = get_input()[0].parse().unwrap();
+    println!("{}", if s == 0 { 1 } else { 0 });
 }
 
 fn get_input() -> Vec<String> {
