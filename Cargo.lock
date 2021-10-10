@@ -656,7 +656,9 @@ version = "0.1.0"
 dependencies = [
  "plotters",
  "proconio",
+ "text_io",
  "textplots",
+ "whiteread",
 ]
 
 [[package]]
@@ -756,6 +758,12 @@ dependencies = [
  "quote",
  "unicode-xid",
 ]
+
+[[package]]
+name = "text_io"
+version = "0.1.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ee74b5019b48991b09803402aaf9e65a053b3993fe9d9c475ab67a395358ba76"
 
 [[package]]
 name = "textplots"
@@ -917,6 +925,12 @@ name = "weezl"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d8b77fdfd5a253be4ab714e4ffa3c49caf146b4de743e97510c0656cf90f1e8e"
+
+[[package]]
+name = "whiteread"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8bc25de0a968755322a6b517a7257df7ec3216ed7907b8fc064906542f9714b3"
 
 [[package]]
 name = "winapi"
