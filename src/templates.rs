@@ -1,40 +1,6 @@
 use std::io;
 use std::collections::HashSet;
 
-fn get_input() -> Vec<String> {
-    let mut word_line = String::new();
-    io::stdin().read_line(&mut word_line).ok();
-    let words: Vec<&str> = word_line.split_whitespace().collect();
-    words.iter().map(|word| word.to_string()).collect()
-}
-
-fn get_input_i64() -> Vec<i64> {
-    let mut word_line = String::new();
-    io::stdin().read_line(&mut word_line).ok();
-    let words: Vec<&str> = word_line.split_whitespace().collect();
-    words.iter().map(|word| word.parse().unwrap()).collect()
-}
-
-fn get_input_lines(line_len:u32) -> Vec<String> {
-    let mut vec:Vec<String> = vec![];
-    let mut input:Vec<String>;
-    for _ in 0..line_len {
-        input = get_input();
-        vec.append(&mut input);
-    }
-    vec
-}
-
-fn get_input_i64_lines(line_len:u32) -> Vec<i64> {
-    let mut vec:Vec<i64> = vec![];
-    let mut input:Vec<i64>;
-    for _ in 0..line_len {
-        input = get_input_i64();
-        vec.append(&mut input);
-    }
-    vec
-}
-
 // Vec<String> -> HashSet<String>
 fn vec_string_hashset(words:&Vec<String>) -> HashSet<String> {
     words.clone().into_iter().collect()
@@ -90,3 +56,49 @@ fn typename<T>(_: T) {
     println!("{}", std::any::type_name::<T>());
 }
 
+// 二分探索
+// 探している値の一番小さいindexを返す
+fn lower_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
+    let mut low = 0;
+    let mut high = v.len();
+    let mut exist = false;
+    while low != high {
+        let mid = (low + high)/2;
+        match v[mid].cmp(s) {
+            std::cmp::Ordering::Less => {
+                low = mid+1;
+            },
+            std::cmp::Ordering::Greater => {
+                high = mid;
+            },
+            std::cmp::Ordering::Equal => {
+                high = mid;
+                exist = true;
+            }
+        }
+    }
+    if exist { Ok(low) } else { Err(low) }
+}
+
+// 探している値の一番大きいindexを返す
+fn upper_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
+    let mut low = 0;
+    let mut high = v.len();
+    let mut exist = false;
+    while low != high {
+        let mid =  (low+high)/2;
+        match v[mid].cmp(s) {
+            std::cmp::Ordering::Greater => {
+                high = mid;
+            },
+            std::cmp::Ordering::Less => {
+                low = mid+1;
+            },
+            std::cmp::Ordering::Equal => {
+                low = mid+1;
+                exist = true;
+            }
+        }
+    }
+    if exist { Ok(low-1) } else { Err(low) }
+}
