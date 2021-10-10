@@ -64,17 +64,13 @@ fn lower_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
     let mut exist = false;
     while low != high {
         let mid = (low + high)/2;
-        match v[mid].cmp(s) {
-            std::cmp::Ordering::Less => {
-                low = mid+1;
-            },
-            std::cmp::Ordering::Greater => {
-                high = mid;
-            },
-            std::cmp::Ordering::Equal => {
-                high = mid;
-                exist = true;
-            }
+        if v[mid] < *s {
+            low = mid+1;
+        } else if v[mid] > *s {
+            high = mid;
+        } else { 
+            high = mid;
+            exist = true;
         }
     }
     if exist { Ok(low) } else { Err(low) }
@@ -87,17 +83,13 @@ fn upper_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
     let mut exist = false;
     while low != high {
         let mid =  (low+high)/2;
-        match v[mid].cmp(s) {
-            std::cmp::Ordering::Greater => {
-                high = mid;
-            },
-            std::cmp::Ordering::Less => {
-                low = mid+1;
-            },
-            std::cmp::Ordering::Equal => {
-                low = mid+1;
-                exist = true;
-            }
+        if v[mid] > *s {
+            high = mid;
+        } else if v[mid] < *s {
+            low = mid+1;
+        } else { 
+            low = mid+1;
+            exist = true;
         }
     }
     if exist { Ok(low-1) } else { Err(low) }
