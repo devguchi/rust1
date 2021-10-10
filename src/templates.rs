@@ -57,40 +57,30 @@ fn typename<T>(_: T) {
 }
 
 // 二分探索
-// 探している値の一番小さいindexを返す
-fn lower_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
+fn lower_bound(v:&Vec<i64>, s:&i64) -> usize {
     let mut low = 0;
     let mut high = v.len();
-    let mut exist = false;
     while low != high {
         let mid = (low + high)/2;
         if v[mid] < *s {
             low = mid+1;
-        } else if v[mid] > *s {
-            high = mid;
         } else { 
             high = mid;
-            exist = true;
         }
     }
-    if exist { Ok(low) } else { Err(low) }
+    low
 }
 
-// 探している値の一番大きいindexを返す
-fn upper_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
+fn upper_bound(v:&Vec<i64>, s:&i64) -> usize {
     let mut low = 0;
     let mut high = v.len();
-    let mut exist = false;
     while low != high {
         let mid =  (low+high)/2;
         if v[mid] > *s {
             high = mid;
-        } else if v[mid] < *s {
-            low = mid+1;
         } else { 
             low = mid+1;
-            exist = true;
         }
     }
-    if exist { Ok(low-1) } else { Err(low) }
+    low
 }

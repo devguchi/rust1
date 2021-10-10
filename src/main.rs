@@ -1,47 +1,50 @@
-// use proconio::input;
+use proconio::input;
 // use whiteread::parse_line;
 
 fn main() {
-    let v = vec![1, 2, 3, 3, 3, 6, 9];
-    let s = 100;
-    println!("{:?}", lower_bound(&v, &s));
-    println!("{:?}", upper_bound(&v, &s));
+    input! {
+        n:usize,
+        mut a:[i64; n],
+        b:[i64; n],
+        mut c:[i64; n],
+    }
+    a.sort();
+    c.sort();
+    let mut ans = 0;
+    for b_idx in 0..n {
+        let a_idx = lower_bound(&a, &b[b_idx]);
+        let c_idx = upper_bound(&c, &b[b_idx]);
+        let num = a_idx*(n-c_idx);
+        ans += if num > 0 { num } else { 0 };
+    } 
+    println!("{}", ans);
 }
 
-// 探している値の一番小さいindexを返す
-fn lower_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
+fn lower_bound(v:&Vec<i64>, s:&i64) -> usize {
     let mut low = 0;
     let mut high = v.len();
-    let mut exist = false;
     while low != high {
         let mid = (low + high)/2;
         if v[mid] < *s {
             low = mid+1;
-        } else if v[mid] > *s {
-            high = mid;
         } else { 
             high = mid;
-            exist = true;
         }
     }
-    if exist { Ok(low) } else { Err(low) }
+    low
 }
 
-// 探している値の一番大きいindexを返す
-fn upper_bound(v:&Vec<i64>, s:&i64) -> Result<usize, usize> {
+fn upper_bound(v:&Vec<i64>, s:&i64) -> usize {
     let mut low = 0;
     let mut high = v.len();
-    let mut exist = false;
     while low != high {
         let mid =  (low+high)/2;
         if v[mid] > *s {
             high = mid;
-        } else if v[mid] < *s {
-            low = mid+1;
         } else { 
             low = mid+1;
-            exist = true;
         }
     }
-    if exist { Ok(low-1) } else { Err(low) }
+    low
 }
+
