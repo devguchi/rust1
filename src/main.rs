@@ -1,11 +1,8 @@
 use std::io;
 
 fn main() {
-    let dts = get_input_i64();
-    let d = dts[0] as f64;
-    let t = dts[1] as f64;
-    let s = dts[2] as f64;
-    if d/s <= t {
+    let x = get_input_i64()[0];
+    if x >= 30 {
         println!("Yes");
     } else {
         println!("No");
