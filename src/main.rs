@@ -1,10 +1,10 @@
 // use proconio::input;
-// use text_io::read;
-use whiteread::parse_line;
+use text_io::read;
+// use whiteread::parse_line;
 
 fn main() {
-    let x:Vec<i32> = parse_line().unwrap(); 
-    let idx = x.iter().position(|&n| n == 0).unwrap();
-    println!("{}", idx+1);
+    let a:i32 = read!();
+    let b:i32 = read!();
+    println!("{}", a*b);
 }
 
