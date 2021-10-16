@@ -3,12 +3,7 @@ use proconio::input;
 fn main() {
     input! {
         s: String,
-        mut t: String,
     }
-    let mut ans = "No"; 
-    t.pop();
-    if s == t {
-        ans = "Yes";
-    }
+    let ans = if s == "ABC" { "ARC" } else { "ABC" };
     println!("{}", ans);
 }
