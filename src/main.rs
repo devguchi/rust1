@@ -2,8 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-        s: String,
+        k: i64,
+        ab: [i64; 2]
     }
-    let ans = if s == "ABC" { "ARC" } else { "ABC" };
-    println!("{}", ans);
+    for i in ab[0]..ab[1]+1 {
+        if i%k == 0 {
+            println!("OK");
+            std::process::exit(0);
+        }
+    }
+    println!("NG");
 }
