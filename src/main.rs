@@ -2,13 +2,16 @@ use proconio::input;
 
 fn main() {
     input! {
-        s: i32,
-        w: i32,
+        mut n: i64,
+        k: i32,
     }
-    if s <= w {
-        println!("unsafe");
-    } else {
-        println!("safe");
+    for _ in 0..k {
+        if n % 200 == 0 {
+            n /= 200;
+        } else {
+            n = (n.to_string()+"200").parse().unwrap();
+        }
     }
+    println!("{}", n);
 }
 
