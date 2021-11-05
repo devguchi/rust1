@@ -1,15 +1,13 @@
 use proconio::input;
+use std::mem;
 
 fn main() {
     input! {
-        n: u32,
+        mut a: u32,
+        mut b: u32,
+        mut c: u32,
     }
-    for c in n.to_string().chars() {
-        if c == '7' {
-            println!("Yes");
-            std::process::exit(0);
-        }
-    }
-    println!("No");
+    mem::swap(&mut a, &mut b);
+    mem::swap(&mut a, &mut c);
+    println!("{} {} {}", a,b,c);
 }
-
