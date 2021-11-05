@@ -2,8 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-        r: f32,
+        n: u32,
     }
-    println!("{}", r*2.0*std::f32::consts::PI)
+    for c in n.to_string().chars() {
+        if c == '7' {
+            println!("Yes");
+            std::process::exit(0);
+        }
+    }
+    println!("No");
 }
 
