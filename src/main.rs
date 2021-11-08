@@ -3,12 +3,13 @@ use proconio::input;
 
 fn main() {
     input!{
-        s: String,
+        n: usize,
+        a: [i64; n],
+        b: [i64; n]
     }
-    let v:Vec<char> = s.chars().collect();
-    let mut result = "No";
-    if v[2] == v[3] && v[4] == v[5] {
-        result = "Yes";
-    }
-    println!("{}", result);
+    let max = a.iter().max().unwrap();
+    let min = b.iter().min().unwrap();
+    let mut cnt = min-max+1;
+    if cnt <= 0 { cnt = 0;}
+    println!("{}", cnt);
 }
