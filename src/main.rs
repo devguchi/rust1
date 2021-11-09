@@ -3,13 +3,8 @@ use proconio::input;
 
 fn main() {
     input!{
-        n: usize,
-        a: [i64; n],
-        b: [i64; n]
+        n: u32,
+        m: u32
     }
-    let max = a.iter().max().unwrap();
-    let min = b.iter().min().unwrap();
-    let mut cnt = min-max+1;
-    if cnt <= 0 { cnt = 0;}
-    println!("{}", cnt);
+    println!("{}", n*(n-1)/2+m*(m-1)/2);
 }
