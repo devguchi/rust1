@@ -5,7 +5,12 @@ use proconio::input;
 
 fn main() {
     input!{
-        n: f32,
+        n: i32,
+        r: i32
     }
-    println!("{}", (n/2.0).ceil());
+    if n >= 10 {
+        println!("{}", r)
+    } else {
+        println!("{}", r+100*(10-n));
+    }
 }
