@@ -1,16 +1,14 @@
 use proconio::input;
 // use proconio::marker::Usize1;
 // use proconio::marker::Chars;
-// use std::collections::HashSet;
+use std::collections::HashSet;
 
 fn main() {
     input!{
-        n: i32,
-        r: i32
+        n: [i32; 3]
     }
-    if n >= 10 {
-        println!("{}", r)
-    } else {
-        println!("{}", r+100*(10-n));
-    }
+    let h:HashSet<i32> = n.into_iter().collect();
+    let mut result = "No";
+    if h.len() == 2 { result = "Yes"; }
+    println!("{}", result);
 }
