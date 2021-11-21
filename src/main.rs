@@ -1,27 +1,19 @@
 use proconio::input;
-// use proconio::marker::Usize1;
-// use proconio::marker::Chars;
-// use std::collections::HashSet;
-
+ 
 fn main() {
     input!{
-        n: i64,
-        k: usize,
-        p_list: [(i64,i64,i64); n]
+        n: usize,
+        x: usize,
+        a: [usize; n]
     }
-    let mut a: Vec<i64> = vec![];
-    for p in p_list.iter() {
-        let total = p.0+p.1+p.2;
-        a.push(total);
-    }
-    a.sort_by(|x,y| y.cmp(x));
-    let limit_score = a[k-1];
-    for p in p_list.iter() {
-        let total = p.0+p.1+p.2+300;
-        if total >= limit_score {
-            println!("Yes");
-        } else {
-            println!("No");
-        }
-    }
+    let mut know_list = vec![false; n];
+    teach(x-1, &mut know_list, &a);
+    let count = (0..n).filter(|&i| know_list[i]).count();
+    println!("{}", count);
+}
+ 
+fn teach(i:usize, mut know_list: &mut Vec<bool>, a: &Vec<usize>) {
+    know_list[i] = true;
+    if know_list[a[i]-1] == true {return;}
+    teach(a[i]-1, &mut know_list, &a);
 }
