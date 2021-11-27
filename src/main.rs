@@ -1,27 +1,27 @@
-use std::io;
+use proconio::*;
 
+#[fastout]
 fn main() {
-    let nv = get_input_i64();
-    let v = nv[1];
-    let a_list = get_input_i64();
-    let mut ans = "No";
-    for a in a_list {
-        if a == v {
-            ans = "Yes";
-            break;
+    input!{ s: String, k: u32 }
+    let c_list:Vec<char> = s.chars().collect();
+    let mut ans = 0;
+    let mut right = 1;
+    let n = s.len();
+    for i in 0..n {
+        loop {
+            let mut cnt:u32 = 0;
+            for c in &c_list[i..right] {
+                if *c == '.' {cnt += 1;}
+            }
+            if cnt <= k {
+                if right - i > ans {ans = right - i;}
+                right+=1;
+                if right > n {right = n; break;}
+                println!("n:{} i:{} right:{} cnt:{} ans:{}", n,i,right,cnt,ans);
+            } else {
+                break;
+            }
         }
     }
-    println!("{}", ans);
-}
-
-fn get_input() -> Vec<String> {
-    let mut word_line = String::new();
-    io::stdin().read_line(&mut word_line).ok();
-    let words: Vec<&str> = word_line.split_whitespace().collect();
-    words.iter().map(|word| word.to_string()).collect()
-}
-
-fn get_input_i64() -> Vec<i64> {
-    let words = get_input();
-    words.iter().map(|word| word.parse().unwrap()).collect()
+    println!("{}", ans)
 }
