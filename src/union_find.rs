@@ -1,23 +1,3 @@
-use proconio::*;
-
-#[fastout]
-fn main() {
-    input! {
-        n: usize,
-        q: usize,
-        pab_list: [(usize,usize,usize); q]
-    }
-    let mut uf = UnionFind::new(n);
-    for pab in pab_list {
-        if pab.0 == 0 {
-            uf.union(pab.1, pab.2);
-        } else {
-            let ans = if uf.same(pab.1, pab.2) { "Yes" } else { "No" };
-            println!("{}", ans);
-        }
-    }
-}
-
 struct UnionFind {
     parents: Vec<usize>,
     ranks: Vec<usize>,
