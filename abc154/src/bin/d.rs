@@ -18,9 +18,9 @@ fn main() {
 
     let mut ans = 0.0;
     for x in p[max_idx..max_idx+k].iter() {
-        for y in 1..x+1 {
-            ans += y as f64 / *x as f64;
-        }
+        let xf = *x as f64;
+        ans += (1.0+xf)*xf/2.0/xf;
     }
     println!("{}", ans);
 }
+
