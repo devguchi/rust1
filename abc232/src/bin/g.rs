@@ -2,7 +2,7 @@ use proconio::*;
 
 #[fastout]
 fn main() {
-    input!{
+    input! {
         n: usize,
     }
 }
