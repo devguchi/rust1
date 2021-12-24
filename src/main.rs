@@ -4,25 +4,30 @@ use proconio::marker::{Bytes, Chars, Usize1};
 use proconio::*;
 use std::cmp::{max, min, Reverse};
 use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
-use std::ops::{Add, Mul, Sub};
 
-#[fastout]
+// #[fastout]
 fn main() {
-    input! {
-        n: usize,
-        x: [f64; n],
-        y: [f64; n]
+    let b = 0b10010010;
+    let c = b << 1;
+    println!("{:b}", b);
+    println!("{:b}", c);
+    let d = b & b;
+    let e = b | b;
+    let f = b ^ b;
+    let g = !b;
+    let h = g << 1;
+    println!("{:b}", d);
+    println!("{:b}", e);
+    println!("{:b}", f);
+    println!("{:b}", g);
+    println!("{:b}", h);
+    println!("{}", format!("{:b}", h).len());
+
+    for i in 0..8 {
+        let mut ans = String::new();
+        for j in 0..3 {
+            ans += if i & (1 << j) > 0 { "o" } else { "x" };
+        }
+        println!("{:0>3b} => {}", i, ans.chars().rev().collect::<String>());
     }
-    let mut min_dist:f64 = 100000000.0;
-    for (i, j) in (0..n).tuple_combinations() {
-        let _dist = dist(x[i], y[i], x[j], y[j]);
-        if min_dist > _dist { min_dist = _dist; }
-    }
-    println!("{}", min_dist);
 }
-
-fn dist(x1: f64, y1: f64, x2: f64, y2: f64) -> f64 {
-    (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)
-}
-
-
