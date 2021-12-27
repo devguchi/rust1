@@ -85,7 +85,7 @@ itertools = "=0.9.0"
 itertools-num = "=0.1.3"
 
 # `BTreeMap`, `BTreeSet`, `HashMap`, `HashSet`のリテラル用マクロ
-#maplit = "=1.0.2"
+maplit = "=1.0.2"
 
 # 即席enum `Either<L, R>`
 #either = "=1.5.3"
@@ -109,7 +109,7 @@ proconio = { version = "=0.3.6", features = ["derive"] }
 #whiteread = "=0.5.0"
 
 # 高速なハッシュ関数
-#rustc-hash = "=1.1.0"
+rustc-hash = "=1.1.0"
 
 # ある長さまでは要素を「直に」持つ可変長配列
 #smallvec = "=1.2.0"
@@ -132,7 +132,7 @@ use proconio::marker::{Bytes, Chars, Usize1};
 use proconio::*;
 use std::cmp::{max, min, Reverse};
 use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
-use std::integer::gcd;
+use num::integer::{gcd, lcm};
 
 #[fastout]
 fn main() {
