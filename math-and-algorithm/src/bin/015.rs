@@ -9,6 +9,16 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        a: usize,
+        b: usize,
+    }
+    println!("{}", gcd(a, b));
+}
+
+fn gcd(m: usize, n: usize) -> usize {
+    if n == 0 {
+        m
+    } else {
+        gcd(n, m % n)
     }
 }

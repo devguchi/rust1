@@ -20,7 +20,7 @@ panic = 'abort'
 # https://github.com/rust-lang-ja/atcoder-rust-resources/wiki/2020-Update
 
 # 数値型の抽象化、多倍長整数、複素数、分数、及び整数型の拡張
-#num = "=0.2.1"
+num = "=0.2.1"
 #num-bigint = "=0.2.6"
 #num-complex = "=0.2.4"
 #num-integer = "=0.1.42"
@@ -132,6 +132,7 @@ use proconio::marker::{Bytes, Chars, Usize1};
 use proconio::*;
 use std::cmp::{max, min, Reverse};
 use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
+use std::integer::gcd;
 
 #[fastout]
 fn main() {

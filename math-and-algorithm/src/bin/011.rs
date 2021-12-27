@@ -8,7 +8,24 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 
 #[fastout]
 fn main() {
-    input! {
-        n: usize,
+    input! { n: usize }
+    for i in 2..n + 1 {
+        if is_prime_number(i) {
+            print!("{} ", i);
+        }
     }
+}
+
+fn is_prime_number(n: usize) -> bool {
+    if n <= 1 {
+        return false;
+    }
+    let mut i = 2;
+    while i * i <= n {
+        if n % i == 0 {
+            return false;
+        }
+        i += 1;
+    }
+    true
 }
