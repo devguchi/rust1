@@ -10,5 +10,21 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        r: usize
     }
+    let ans = factorial(n) / factorial(n - r) / factorial(r);
+    println!("{}", ans);
+}
+
+fn _factorial(n: usize, memo: &mut Vec<usize>) -> usize {
+    if n < 2 || memo[n] > 1 {
+        memo[n]
+    } else {
+        memo[n] = _factorial(n - 1, memo) * n;
+        memo[n]
+    }
+}
+fn factorial(n: usize) -> usize {
+    let mut memo: Vec<usize> = vec![1; n + 1];
+    _factorial(n, &mut memo)
 }

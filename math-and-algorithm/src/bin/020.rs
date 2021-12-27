@@ -10,5 +10,21 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        a: [usize; n]
     }
+    let mut ans = 0;
+    for i in 0..n {
+        for j in i + 1..n {
+            for k in j + 1..n {
+                for o in k + 1..n {
+                    for p in o + 1..n {
+                        if a[i] + a[j] + a[k] + a[o] + a[p] == 1000 {
+                            ans += 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    println!("{}", ans);
 }

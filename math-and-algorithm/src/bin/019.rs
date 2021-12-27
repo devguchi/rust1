@@ -10,5 +10,12 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        a: [usize; n]
     }
+    let mut cnt: Vec<usize> = vec![0; 3];
+    for i in a.iter() {
+        cnt[i - 1] += 1;
+    }
+    let ans = cnt.iter().fold(0, |ans, x| ans + x * (x - 1) / 2);
+    println!("{}", ans);
 }
