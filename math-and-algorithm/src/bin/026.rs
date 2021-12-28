@@ -8,7 +8,7 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 
 #[fastout]
 fn main() {
-    input! {
-        n: usize,
-    }
+    input! { n: f64 }
+    let ans: f64 = (0..n as usize).fold(0.0, |e, i| e + n / (n - i as f64));
+    println!("{}", ans);
 }
