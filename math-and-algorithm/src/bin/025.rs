@@ -10,5 +10,9 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        a: [f64; n],
+        b: [f64; n]
     }
+    let ans: f64 = (0..n).fold(0.0, |ans, i| ans + a[i] * 1.0 / 3.0 + b[i] * 2.0 / 3.0);
+    println!("{}", ans);
 }

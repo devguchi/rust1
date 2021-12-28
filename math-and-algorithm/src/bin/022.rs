@@ -13,9 +13,9 @@ fn main() {
         a: [usize; n]
     }
     let mut ans = 0;
-    let mut memo:Vec<usize> = vec![0; 100000];
+    let mut memo: Vec<usize> = vec![0; 100000];
     for i in 0..n {
-        ans += memo[100000-a[i]];
+        ans += memo[100000 - a[i]];
         memo[a[i]] += 1;
     }
     println!("{}", ans);

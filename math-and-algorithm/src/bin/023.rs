@@ -10,5 +10,11 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        b: [f64; n],
+        r: [f64; n]
     }
+    let bs = b.iter().sum::<f64>();
+    let rs = r.iter().sum::<f64>();
+    let n = n as f64;
+    println!("{}", bs / n + rs / n);
 }
