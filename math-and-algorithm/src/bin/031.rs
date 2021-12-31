@@ -10,5 +10,15 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        a_list: [usize; n]
     }
+    let mut dp = vec![0; n];
+    for (i, a) in a_list.iter().enumerate() {
+        if i < 2 {
+            dp[i] = *a;
+        } else {
+            dp[i] = max(dp[i - 1], a + dp[i - 2]);
+        }
+    }
+    println!("{}", dp.pop().unwrap());
 }
