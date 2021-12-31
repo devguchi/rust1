@@ -10,5 +10,16 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        w: usize,
+        wv: [(usize,usize); n]
     }
+    let mut dp = vec![0; w + 1];
+    for x in wv.iter() {
+        for d in (x.0..=w).rev() {
+            if dp[d - x.0] > 0 || d - x.0 == 0 {
+                dp[d] = max(dp[d], dp[d - x.0] + x.1)
+            }
+        }
+    }
+    println!("{}", dp.iter().max().unwrap());
 }
