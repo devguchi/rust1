@@ -10,5 +10,13 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 fn main() {
     input! {
         n: usize,
+        x: usize,
+        mut a:[usize; n]
     }
+    a.sort();
+    let ans = match a.binary_search(&x) {
+        Ok(_) => "Yes",
+        _ => "No",
+    };
+    println!("{}", ans);
 }
