@@ -11,19 +11,14 @@ fn main() {
     input! {
         n: usize,
         s: usize,
-        a: [usize; n]
+        a_list: [usize; n]
     }
-    let mut ans = String::from("No");
-    for i in 0..2_usize.pow(n as u32) {
-        let mut sum = 0;
-        for j in 0..n {
-            if i & (1 << j) > 0 {
-                sum += a[j];
-            };
-        }
-        if sum == s {
-            ans = String::from("Yes");
+    let mut memo = vec![false; 10001];
+    memo[0] = true;
+    for a in a_list {
+        for j in (a..=s).rev() {
+            memo[j] |= memo[j - a];
         }
     }
-    println!("{}", ans);
+    println!("{}", if memo[s] { "Yes" } else { "No" });
 }
