@@ -9,8 +9,14 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 #[fastout]
 fn main() {
     input! {
-        a: (usize, usize),
-        b: (usize, usize),
-        c: (usize, usize),
+        n: usize,
+        s: String
     }
+    let mut ans = 0;
+    for i in 0..n - 2 {
+        if &s[i..i + 3] == String::from("ABC") {
+            ans += 1;
+        }
+    }
+    println!("{}", ans);
 }

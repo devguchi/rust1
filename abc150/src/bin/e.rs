@@ -9,8 +9,6 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 #[fastout]
 fn main() {
     input! {
-        a: (usize, usize),
-        b: (usize, usize),
-        c: (usize, usize),
+        n: usize,
     }
 }
