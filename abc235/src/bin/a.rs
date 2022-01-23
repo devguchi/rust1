@@ -1,0 +1,19 @@
+#![cfg_attr(debug_assertions, allow(dead_code, unused_imports))]
+use itertools::{iproduct, Itertools};
+use petgraph::{algo::is_isomorphic, graph::UnGraph};
+use proconio::marker::{Bytes, Chars, Usize1};
+use proconio::*;
+use std::cmp::{max, min, Reverse};
+use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
+
+#[fastout]
+fn main() {
+    input! { abc: String }
+    let v: Vec<u32> = abc.chars().map(|c| _sum(c.to_digit(10).unwrap())).collect();
+    let ans: u32 = v.iter().sum();
+    println!("{}", ans);
+}
+
+fn _sum(x: u32) -> u32 {
+    x * 100 + x * 10 + x
+}
